@@ -4,15 +4,22 @@ import './App.css';
 import { Map } from './components/map';
 import { Input } from './components/input';
 
-const App = () => {
-  const [names, setNames] = useState([]);
+const DATA = [
+  {name: 'Eric Chen', address: '123 Main St'}
+]
 
+const App = () => {
+  const [names, setNames] = useState(DATA);
+
+  const add = (data) => { 
+    setNames([...names, data])
+  }
   
   return (
     <div className="App">
       MB Social Justice Hackathon
-      <Map/>
-      <Input/>
+      <Map names={names}/>
+      <Input add={add}/>
     </div>
   );
 }

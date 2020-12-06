@@ -1,9 +1,18 @@
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
+import './App.css';
+import { Map } from './components/map';
+import { Input } from './components/input';
+
+const App = () => {
+  const [names, setNames] = useState([]);
+
+  
   return (
     <div className="App">
-      Hello World
+      MB Social Justice Hackathon
+      <Map/>
+      <Input/>
     </div>
   );
 }

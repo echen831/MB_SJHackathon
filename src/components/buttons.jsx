@@ -3,7 +3,7 @@ import { STATES } from './states'
 
 const COLORS = ['red', 'blue', 'green', 'orange', 'purple', 'gold', 'indigo', 'brown']
 
-export const Buttons = ({ setCurrState }) => {
+export const Buttons = ({ setCurrState, fetchHistData }) => {
 
 
 
@@ -14,7 +14,7 @@ export const Buttons = ({ setCurrState }) => {
                     <li key={state.abbreviation}
                         style={{color: 'white', backgroundColor: COLORS[idx % COLORS.length]}}
                         className='button'
-                        onClick={() => setCurrState(state.abbreviation)}>
+                        onClick={() => {setCurrState(state.abbreviation); fetchHistData(state.abbreviation.toLowerCase())}}>
                         {state.abbreviation}</li>
                 ))}
             </ul>

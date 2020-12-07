@@ -16,8 +16,8 @@ const App = () => {
   return (
     <div className="App">
       MB Social Justice Hackathon
-      <Map currState={currState}/>
       <States states={states} currState={currState} setCurrState={setCurrState}/>
+      <Map currState={currState}/>
     </div>
   );
 }

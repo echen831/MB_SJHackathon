@@ -1,14 +1,18 @@
 import React, {useState, useEffect} from 'react';
+import { STATES } from './states'
 
-export const States = ({states, setCurrState}) => {
+export const States = ({ setCurrState }) => {
 
 
 
     return (
         <div>
-            <ul>
-                {states.map(state => (
-                    <button key={state} onClick={() => setCurrState(state)}>{state}</button>
+            <ul className='wrapper'>
+                {STATES.map(state => (
+                    <li key={state.abbreviation}
+                        className='button'
+                        onClick={() => setCurrState(state.abbreviation)}>
+                        {state.abbreviation}</li>
                 ))}
             </ul>
         </div>

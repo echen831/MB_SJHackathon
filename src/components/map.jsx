@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { STATES_HASH } from './states.js';
 
 export const Map = ({currState}) => {
 
@@ -29,14 +30,17 @@ export const Map = ({currState}) => {
     } else {
         return (
             <div>
-                {items.map(state => (
-                    <ul>
-                        <div className={(currState !== state.state) ? 'hide' : ''}>
-                            <li>State:{state.state}</li>
+                {items.map(state => {
+                    const display = currState !== state.state ? 'hide' : ''
+                    return <ul>
+                        <div className={display} key={state.state}>
+                            <li>State: {STATES_HASH[state.state]}</li>
+                            <li>Total Tests: {state.totalTestResults}</li>
                             <li>Positive: {state.positive}</li>
+                            <li>Negative: {state.negative}</li>
                         </div>
                     </ul>
-                ))}
+                })}
             </div>
         )
     }

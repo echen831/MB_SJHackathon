@@ -1,4 +1,9 @@
-ul {
+body, ul {
+  padding: none;
+  margin: none;
+}
+
+ul, li {
  list-style: none;
 }
 
@@ -7,6 +12,23 @@ ul {
   width: 400px;
   height: 400px;
   border: 1px solid black;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  gap: 10px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .hide {

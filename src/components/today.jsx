@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { STATES_HASH } from './states.js';
 
-export const Map = ({currState}) => {
+export const Today = ({currState}) => {
 
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);

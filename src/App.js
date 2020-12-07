@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 import './App.css';
-import { Map } from './components/map';
-import { States } from './components/states';
+import { Today } from './components/today';
+import { Buttons } from './components/buttons';
 
 
 const App = () => {
@@ -13,8 +13,8 @@ const App = () => {
   return (
     <div className="App">
       MB Social Justice Hackathon
-      <States currState={currState} setCurrState={setCurrState}/>
-      <Map currState={currState}/>
+      <Buttons currState={currState} setCurrState={setCurrState}/>
+      <Today currState={currState}/>
     </div>
   );
 }

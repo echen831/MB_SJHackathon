@@ -3,7 +3,7 @@ import { STATES } from './states'
 
 const COLORS = ['red', 'blue', 'green', 'orange', 'purple', 'gold', 'indigo', 'brown']
 
-export const States = ({ setCurrState }) => {
+export const Buttons = ({ setCurrState }) => {
 
 
 

@@ -30,14 +30,20 @@ export const Map = ({currState}) => {
     } else {
         return (
             <div>
+                <h1>Today's Data</h1>
                 {items.map(state => {
-                    const display = currState !== state.state ? 'hide' : ''
+                    const display = currState !== state.state ? 'hide' : 'state-wrapper'
                     return <ul>
                         <div className={display} key={state.state}>
-                            <li>State: {STATES_HASH[state.state]}</li>
-                            <li>Total Tests: {state.totalTestResults}</li>
-                            <li>Positive: {state.positive}</li>
-                            <li>Negative: {state.negative}</li>
+                            <li>State</li>
+                            <li>Total Tests</li>
+                            <li>Positive</li>
+                            <li>Negative</li>
+                            <li>{STATES_HASH[state.state]}</li>
+                            <li>{state.totalTestResults}</li>
+                            <li>{state.positive}</li>
+                            <li>{state.negative}</li>
+
                         </div>
                     </ul>
                 })}

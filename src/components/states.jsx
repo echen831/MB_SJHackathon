@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { STATES } from './states'
 
-const COLORS = ['red', 'blue', 'green', 'orange', 'purple', 'gold', 'indigo']
+const COLORS = ['red', 'blue', 'green', 'orange', 'purple', 'gold', 'indigo', 'brown']
 
 export const States = ({ setCurrState }) => {
 
@@ -9,7 +9,7 @@ export const States = ({ setCurrState }) => {
 
     return (
         <div>
-            <ul className='wrapper'>
+            <ul className='button-wrapper'>
                 {STATES.map((state, idx) => (
                     <li key={state.abbreviation}
                         style={{color: 'white', backgroundColor: COLORS[idx % COLORS.length]}}

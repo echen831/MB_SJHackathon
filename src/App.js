@@ -2,24 +2,22 @@ import React, { useState } from 'react';
 
 import './App.css';
 import { Map } from './components/map';
-import { Input } from './components/input';
+import { States } from './components/states';
 
-const DATA = [
-  {name: 'Eric Chen', address: '123 Main St'}
-]
+
+const STATES = ['AK', 'CA', 'NV']
 
 const App = () => {
-  const [names, setNames] = useState(DATA);
 
-  const add = (data) => { 
-    setNames([...names, data])
-  }
+  const [states, setStates] = useState(STATES);
+  const [currState, setCurrState] = useState('AK')
+
   
   return (
     <div className="App">
       MB Social Justice Hackathon
-      <Map names={names}/>
-      <Input add={add}/>
+      <Map currState={currState}/>
+      <States states={states} currState={currState} setCurrState={setCurrState}/>
     </div>
   );
 }

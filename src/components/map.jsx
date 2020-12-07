@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
-export const Map = ({ names }) => {
+export const Map = ({currState}) => {
 
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch('https://api.covidtracking.com/v1/states/info.json')
+        fetch(`https://api.covidtracking.com/v1/states/current.json`)
             .then(res => res.json())
             .then((result) => {
                 setIsLoaded(true);
@@ -29,11 +29,14 @@ export const Map = ({ names }) => {
     } else {
         return (
             <div>
-                <ul>
-                    {items.map(state => {
-                        return <li>{state.state}</li>
-                    })}
-                </ul>
+                {items.map(state => (
+                    <ul>
+                        <div className={(currState !== state.state) ? 'hide' : ''}>
+                            <li>State:{state.state}</li>
+                            <li>Positive: {state.positive}</li>
+                        </div>
+                    </ul>
+                ))}
             </div>
         )
     }

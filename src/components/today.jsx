@@ -6,6 +6,7 @@ export const Today = ({currState}) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
+    const [date, setDate] = useState(new Date());
 
     useEffect(() => {
         fetch(`https://api.covidtracking.com/v1/states/current.json`)
@@ -30,22 +31,21 @@ export const Today = ({currState}) => {
     } else {
         return (
             <div>
-                <h1>Today's Data</h1>
+                <h1>Today's Data: {`${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`}</h1>
+                <h2>State: {STATES_HASH[currState]}</h2>
                 {items.map(state => {
                     const display = currState !== state.state ? 'hide' : 'state-wrapper'
-                    return <ul>
+                    return (
                         <div className={display} key={state.state}>
-                            <li>State</li>
                             <li>Total Tests</li>
                             <li>Positive</li>
                             <li>Negative</li>
-                            <li>{STATES_HASH[state.state]}</li>
                             <li>{state.totalTestResults}</li>
                             <li>{state.positive}</li>
                             <li>{state.negative}</li>
-
                         </div>
-                    </ul>
+
+                    )
                 })}
             </div>
         )

@@ -43,6 +43,7 @@ export const History = ({ data, isLoaded, error }) => {
                     <Legend />
                     <Bar dataKey="positive" stackId="a" fill="#8884d8" />
                     <Bar dataKey="negative" stackId="a" fill="#82ca9d" />
+                    <Bar dataKey="totalTestResults" stackId="a" fill="#82c8ca" />
                 </BarChart>
             </div>
         )
@@ -55,6 +56,7 @@ const CustomTooltip = (props) => {
         return (
             <div className="custom-tooltip">
                 <p className="date">{setDate(props.payload[0].payload.date)}</p>
+                <p>Total: {props.payload[0].payload.totalTestResults}</p>
                 <p className="positive">Pos: {props.payload[0].payload.positive}</p>
                 <p className="negative">Neg: {props.payload[0].payload.negative}</p>
             </div>

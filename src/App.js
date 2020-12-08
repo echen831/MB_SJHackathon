@@ -9,23 +9,24 @@ import { Buttons } from './components/buttons';
 const App = () => {
 
   const [currState, setCurrState] = useState('CA');
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState(null);
+  const [isHistLoaded, setHistIsLoaded] = useState(false);
+  const [histError, setHistError] = useState(null);
   const [histData, setHistdata] = useState([]);
 
 
   useEffect(() => { fetchHistData(currState)}, [])
 
   const fetchHistData = (state) => {
+    setHistIsLoaded(false);
     fetch(`https://api.covidtracking.com/v1/states/${state}/daily.json`)
       .then(res => res.json())
       .then((result) => {
-        setIsLoaded(true);
+        setHistIsLoaded(true);
         setHistdata(result);
       },
         (error) => {
-          setIsLoaded(true);
-          setError(error)
+          setHistIsLoaded(true);
+          setHistError(error)
         }
       )
   }
@@ -36,7 +37,7 @@ const App = () => {
       MB Social Justice Hackathon
       <Buttons currState={currState} setCurrState={setCurrState} fetchHistData={fetchHistData}/>
       <Today currState={currState}/>
-      <History data={histData}/>
+      <History data={histData} isLoaded={isHistLoaded} error={histError}/>
     </div>
   );
 }

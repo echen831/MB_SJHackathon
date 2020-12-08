@@ -5,8 +5,6 @@ const COLORS = ['red', 'blue', 'green', 'orange', 'purple', 'gold', 'indigo', 'b
 
 export const Buttons = ({ setCurrState, fetchHistData }) => {
 
-
-
     return (
         <div>
             <ul className='button-wrapper'>
@@ -14,7 +12,8 @@ export const Buttons = ({ setCurrState, fetchHistData }) => {
                     <li key={state.abbreviation}
                         style={{color: 'white', backgroundColor: COLORS[idx % COLORS.length]}}
                         className='button'
-                        onClick={() => {setCurrState(state.abbreviation); fetchHistData(state.abbreviation.toLowerCase())}}>
+                        onClick={() => {setCurrState(state.abbreviation); 
+                                        fetchHistData(state.abbreviation.toLowerCase())}}>
                         {state.abbreviation}</li>
                 ))}
             </ul>

@@ -4,6 +4,8 @@ import './App.css';
 import { Today } from './components/today';
 import { History } from './components/history'
 import { Buttons } from './components/buttons';
+import { Map } from './components/map';
+import data from './assets/us_map.json';
 
 const Months = {
   '01': 'Jan',
@@ -28,7 +30,7 @@ const App = () => {
   const [histData, setHistdata] = useState([]);
 
 
-  useEffect(() => { fetchHistData(currState)}, [])
+  useEffect(() => { fetchHistData(currState) }, [])
 
   const fetchHistData = (state) => {
     setHistIsLoaded(false);
@@ -63,9 +65,10 @@ const App = () => {
   return (
     <div className="App">
       MB Social Justice Hackathon
-      <Buttons currState={currState} setCurrState={setCurrState} fetchHistData={fetchHistData}/>
+      <Buttons setCurrState={setCurrState} fetchHistData={fetchHistData}/>
       <Today currState={currState}/>
       <History data={histData} isLoaded={isHistLoaded} error={histError}/>
+      <Map data={data}/>
     </div>
   );
 }

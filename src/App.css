@@ -43,6 +43,10 @@ ul, li {
   padding: 5px;
 }
 
+.state {
+  cursor: pointer;
+}
+
 .hide {
   display: none;
 }

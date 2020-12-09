@@ -13,7 +13,7 @@ export const History = ({ data, isLoaded, error }) => {
     } else {
         return (
             <div>
-                <h1>Historic Data</h1>         
+                <h1>Historic Data</h1>    
                 <AreaChart
                     width={1200}
                     height={500}

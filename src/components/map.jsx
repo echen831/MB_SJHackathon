@@ -1,30 +1,46 @@
-import React, { useRef, useEffect } from 'react';
-import { select, geoPath, geoMercator, geoAlbersUsa } from "d3";
-import useResizeObserver from "use-resize-observer";
+import React, { useRef, useEffect, useState } from 'react';
+import { select, geoPath, geoAlbersUsa } from "d3";
+import { STATES_ABREV_HASH} from "./states"
 
-export const Map = ({ data }) => {
+const colors = ["grey", "green", "yellow", "orange", "red", "purple", "maroon"]
+// enter code to create color scale
+// var colorScale = d3.scaleThreshold()
+//     .range(["grey", "green", "yellow", "orange", "red", "purple", "maroon"]);
+
+
+export const Map = ({ data, fetchHistData }) => {
     const svgRef = useRef();
     const wrapperRef = useRef();
-    const dimensions = useResizeObserver(wrapperRef);
+    const [selectedState, setSelectedState] = useState(null);
 
     useEffect(() => {
         const svg = select(svgRef.current);
+        
+        const width = 960;
+        const height = 500;
 
-        const { width, height } = 
-            dimensions || wrapperRef.current.getBoundingClientRect();
-
-        const projection = geoAlbersUsa().fitSize([960, 500], data);
-        const pathGenerator = geoPath().projection(projection)
+        const projection = geoAlbersUsa().fitSize([width, height], data);
+        const pathGenerator = geoPath().projection(projection);
 
         svg
             .selectAll(".state")
             .data(data.features)
             .join("path")
+            .on("click", (feature, d) => {
+                console.log(feature, d)
+            })
+            .attr("fill", (d) => {
+                var fips = d.properties.STATE
+                return colors[Number(fips) % colors.length];
+            })
             .attr("class", "state")
             .attr("d", feature => pathGenerator(feature));
 
-    }, [data, dimensions])
+    }, [data])
 
+    const selectColor = (color, fips) => {
+        return color[Number(fips) % color.length]
+    } 
 
     return (
         <div ref={wrapperRef} style={{width: 1000, height: 1000}} >
@@ -33,3 +49,26 @@ export const Map = ({ data }) => {
     )
 }
 
+
+// enter code to define tooltip
+
+// var tooltip = d3.select('body').append("div")
+//     .attr("id", "tooltip-div")
+//     .attr("class", "tooltip")
+//     .style("opacity", 0);
+
+/* D3 tooltip for map */
+// div.tooltip {
+//     position: absolute;
+//     text - align: center;
+//     color: white;
+//     width: 220px;
+//     height: 120px;
+//     padding: 2px;
+//     font: 12px sans - serif;
+//     background - color: gray;
+//     border: 2px;
+//     border: solid;
+//     border - radius: 8px;
+//     pointer - events: none;
+// }

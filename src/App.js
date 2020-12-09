@@ -68,7 +68,7 @@ const App = () => {
       <Buttons setCurrState={setCurrState} fetchHistData={fetchHistData}/>
       <Today currState={currState}/>
       <History data={histData} isLoaded={isHistLoaded} error={histError}/>
-      <Map data={data}/>
+      <Map data={data} fetchHistData={fetchHistData}/>
     </div>
   );
 }

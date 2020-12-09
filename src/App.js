@@ -5,6 +5,20 @@ import { Today } from './components/today';
 import { History } from './components/history'
 import { Buttons } from './components/buttons';
 
+const Months = {
+  '01': 'Jan',
+  '02': 'Feb',
+  '03': 'Mar',
+  '04': 'Apr',
+  '05': 'May',
+  '06': 'Jun',
+  '07': 'Jul',
+  '08': 'Aug',
+  '09': 'Sep',
+  '10': 'Oct',
+  '11': 'Nov',
+  '12': 'Dec'
+}
 
 const App = () => {
 
@@ -21,14 +35,28 @@ const App = () => {
     fetch(`https://api.covidtracking.com/v1/states/${state}/daily.json`)
       .then(res => res.json())
       .then((result) => {
+        let newResult = result.map(res => {
+            let newRes = Object.assign({}, res);
+            newRes.date = setDate(newRes.date);
+            return newRes;
+        })
         setHistIsLoaded(true);
-        setHistdata(result);
+        setHistdata(newResult);
       },
         (error) => {
           setHistIsLoaded(true);
           setHistError(error)
         }
       )
+  }
+
+  const setDate = (date) => {
+    date = date.toString();
+    let y = date.slice(0, 4);
+    let m = date.slice(4, 6);
+    let d = date.slice(6);
+
+    return `${Months[m]} ${d}, ${y}`
   }
 
   

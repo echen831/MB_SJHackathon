@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { STATES } from './states'
 
 const COLORS = ['red', 'blue', 'green', 'orange', 'purple', 'gold', 'indigo', 'brown']

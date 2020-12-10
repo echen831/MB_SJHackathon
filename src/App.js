@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 import './App.css';
 import { Today } from './components/today';
-import { History } from './components/history'
+import { History } from './components/history';
 import { Buttons } from './components/buttons';
 import { Map } from './components/map';
+import { Header } from './components/header';
+import { About } from './components/about';
 import data from './assets/us_map.json';
 
 const Months = {
@@ -64,14 +66,15 @@ const App = () => {
   
   return (
     <div className="App">
-      MB Social Justice Hackathon
-      <div className='map-wrapper'>
+      <Header/>
+      <div className='all-wrapper'>
         <div className='info-wrapper'>
           <Today currState={currState}/>
           <History data={histData} isLoaded={isHistLoaded} error={histError}/>
         </div>
         <Map data={data} fetchHistData={fetchHistData} setCurrState={setCurrState}/>
       </div>
+      <About/>
       {/* <Buttons setCurrState={setCurrState} fetchHistData={fetchHistData}/> */}
     </div>
   );

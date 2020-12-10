@@ -1,6 +1,6 @@
 body, ul, li, p {
-  padding: none;
-  margin: none;
+  padding: 0;
+  margin: 0;
 }
 
 ul, li {
@@ -8,7 +8,10 @@ ul, li {
 }
 
 .App {
-  height: 100vh;
+  padding: none;
+  margin: none;
+  height: 110vh;
+  background-color: rgb(255, 255, 236);
 }
 
 .state-wrapper {
@@ -23,15 +26,14 @@ ul, li {
   border: .5px solid black;
 }
 
-.map-wrapper {
+.all-wrapper {
   display: flex;
-  align-items: center;
-  height: 100%;
+  padding: 10px;
 }
 
 .info-wrapper {
   width: 40%;
-  height: 100%;
+  height: 80%;
 }
 
 .map-wrapper map {
@@ -86,14 +88,349 @@ svg .state:hover {
   display: none;
 }
 
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgreen;
+  border-bottom: lightgray;
+}
+
+.history-wrapper {
+  height: 315px;
+}
+
 .loader {
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
 }
 
-.loader img{
-  width: 325px;
-  height: 325px;
+
+
+/*
+About
+*/
+
+.about-all {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: whitesmoke;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: 0;
+    /* overflow: auto; */
+    /* justify-content: center; */
+    align-items: center;
+    /* margin-left: 5em; */
+    /* border: 3px solid black; */
+    /* max-width: 1200px; */
 }
+
+.about-all ul {
+    list-style: none;
+}
+
+
+
+/* .about-header {
+ min-height: 10%; 
+ height:fit-content;
+ width: 100%;
+ background-color: white; 
+ display: flex;
+ justify-content: center;
+align-items: center;
+} */
+
+
+.about-body {
+    height: 100%; 
+    width: 100%;
+    /* background-color: rgb(201, 85, 85); */
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+}
+
+/* 
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.get-started-btn {
+    width: 10em;
+    height: 4em;
+    border: 1px solid black;
+
+}
+
+.kanban-board {
+    width: 30em;
+    height: 20em;
+    margin: 2em;
+    border-radius: 2px;
+}
+
+.info-body {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 70em;
+    height: 20em;
+    margin-bottom: 2em; 
+}
+
+
+
+.kanban-pics {
+    position: absolute;
+    width: 30em;
+    height: 20em;
+    border-radius: 2px;
+    top: 0;
+    left: 5em;
+}
+
+
+
+#hide {
+    display: none;
+}
+#selected {
+    font-weight: bold;
+}
+
+#team {
+    font-size: 50px;
+    height: 1em;
+}
+
+.covid-body-left {
+    margin-right: 5em;
+}
+
+.covid-body-left ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+.about-people-all {
+    /* background-color:rgb(5, 116, 116); */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+    align-items: center;
+    min-width: 90%;
+    flex: 1;
+    margin-top: 1em;
+
+} 
+
+.about-team-members {
+    background-color: whitesmoke;
+    /* height: 80%; */
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1em;
+
+}
+
+.person {
+    /* border: 3px solid black; */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 40%;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    overflow: hidden;
+    /* padding: 10%; */
+}
+
+.person-pic {
+    width: 100%;
+    height: 50%;
+    /* background-color: khaki; */
+    display: flex;
+    justify-content: center;
+}
+
+.person-pic img {
+    height: 10em;
+    border-radius: 50%;
+    background-color: turquoise;
+}
+
+.person-name {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    width: 100%;
+    margin: 0;
+    margin-top: .5em;
+}
+
+.person-links {
+    /* background-color: ivory; */
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1em;
+}
+
+
+#linked-icon {
+    height: 41px;
+}
+
+#git-icon {
+    height: 54px;
+}
+
+
+.about-proj {
+    /* background-color: darkkhaki; */
+    height: 10%;
+    /* width: 90%; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.about-proj-tech {
+    /* width: inherit; */
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-proj-tech ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: darkolivegreen;
+    height: 100%;
+    /* width: 100%; */
+    align-items: center;
+}
+
+.tech-title {
+    /* font-size: 30px; */
+    font-weight: bold;
+    /* margin-bottom: 2em; */
+}
+.tech-icons {
+    width: 100%;
+    /* background-color: khaki; */
+}
+
+.about-proj-tech li> img {
+    height: 4.5rem;
+}
+
+#mongo-icon {
+    height: 6rem;
+}
+
+.page-title{
+    width: 100%;
+    height: 10%;
+    /* height: 5em; */
+    background-color: #023e8a;
+    /* position: absolute; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    font-size: 1.75em;
+    padding: .5em;
+
+}
+
+.page-title > h1 {
+    color: white;
+}
+
+.index-body{
+    display: flex;
+    justify-content: center;
+    background-color: yellow;
+}
+
+.about-1 {
+    width: 100%;
+    /* background-color: wheat; */
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+
+.about-1 img {
+    width: 50%;
+}
+
+.objective {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1em;
+}
+
+.about-2 {
+    background-color: rgb(226, 226, 226);
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.about-2 div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-2 img {
+    height: 5em;
+    margin-top: 1em;
+}
+
+.about-2 h2 {
+    margin-top: 1em;
+}
+
+.about-2 p {
+    margin-bottom: 1em;
+}
+
+
+/* .about-3 {
+    width: 100%;
+    background-color: wheat;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-3 h1 {
+    margin-top: 1em;
+} */

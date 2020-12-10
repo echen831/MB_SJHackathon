@@ -31,8 +31,8 @@ export const Today = ({currState}) => {
     } else {
         return (
             <div>
-                <h1>Today's Data: {`${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`}</h1>
-                <h2>State: {STATES_HASH[currState]}</h2>
+                <h2>Today's Data: {`${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`}</h2>
+                <h3>State: {STATES_HASH[currState]}</h3>
                 {items.map(state => {
                     const display = currState !== state.state ? 'hide' : 'state-wrapper'
                     return (

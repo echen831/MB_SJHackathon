@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { select, geoPath, geoAlbersUsa } from "d3";
 import { STATES_ABBREV } from "./states";
 
-const COLORS = ["blue", "green", "gold", "orange", "red", "purple", "maroon", "purple", 'grey', "indigo"];
+const COLORS = ["lightblue", "lightgreen", "gold", "orange", "pink", "purple", "maroon", 'lightgrey', "indigo", 'coral'];
 
 
 
@@ -39,7 +39,7 @@ export const Map = ({ data, fetchHistData, setCurrState }) => {
             // })
             .attr("fill", (d) => {
                 var fips = d.properties.STATE
-                return COLORS[Number(fips[Math.floor(Math.random() * fips.length)]) % COLORS.length];
+                return COLORS[Number(fips) % COLORS.length];
             })
             .attr("class", "state")
             .attr("d", feature => pathGenerator(feature))
@@ -47,7 +47,8 @@ export const Map = ({ data, fetchHistData, setCurrState }) => {
 
 
     return (
-        <div ref={wrapperRef} >
+        <div ref={wrapperRef} className='map-wrapper'>
+            <h3>Click on the State to see its data</h3>
             <svg ref={svgRef} style={{ width: 750, height: 375 }} className='map'></svg>
         </div>
     )

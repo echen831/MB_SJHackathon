@@ -11,11 +11,14 @@ export const History = ({ data, isLoaded, error }) => {
     if (error) {
         return <div>Error: {error.message}</div>
     } else if (!isLoaded) {
-        return <Loader/>
+        return <div className='history-wrapper'>
+            <h3>Historic Data</h3> 
+            <h4>Loading...</h4>
+        </div>
     } else {
         return (
-            <div>
-                <h2>Historic Data</h2>    
+            <div className='history-wrapper'>
+                <h3>Historic Data</h3>    
                 <AreaChart
                     width={450}
                     height={225}

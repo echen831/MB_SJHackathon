@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { select, geoPath, geoAlbersUsa } from "d3";
-import { STATES_ABREV_HASH} from "./states"
+import { STATES_HASH } from "./states"
 
-const colors = ["grey", "green", "yellow", "orange", "red", "purple", "maroon"]
+const COLORS = ["blue", "green", "gold", "orange", "red", "purple", "maroon"];
+
 // enter code to create color scale
 // var colorScale = d3.scaleThreshold()
 //     .range(["grey", "green", "yellow", "orange", "red", "purple", "maroon"]);
@@ -31,16 +32,12 @@ export const Map = ({ data, fetchHistData }) => {
             })
             .attr("fill", (d) => {
                 var fips = d.properties.STATE
-                return colors[Number(fips) % colors.length];
+                return COLORS[Number(fips[fips.length-1]) % COLORS.length];
             })
             .attr("class", "state")
-            .attr("d", feature => pathGenerator(feature));
-
+            .attr("d", feature => pathGenerator(feature))
     }, [data])
 
-    const selectColor = (color, fips) => {
-        return color[Number(fips) % color.length]
-    } 
 
     return (
         <div ref={wrapperRef} style={{width: 1000, height: 1000}} >

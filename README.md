@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Covid Daily Data is a data visual app that allows users to check out updated Covid Test data of their home state.   
 
-## Available Scripts
+Please check it out [here](https://echen831.github.io/MB_SJHackathon/).
 
-In the project directory, you can run:
+## Technologies Used:
 
-### `npm start`
+* React/Redux
+* Javascript
+* HTML/CSS
+* D3
+* Recharts
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technical Challenges
+* Using D3 to draw interactive map and update information.
+* Manipulating JSON object structure to pass correct props to different components.
+* Utilizing Recharts and D3 to display acurate information on graphs and tooltips.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## Features:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Updated daily data:
 
-### `npm run build`
+* Users can see updated Covid testing data of the current day.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Historical Data:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Users can also see historical testing data of a specific state.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+#### Sample Code: 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The follow code snippet shows a fecthHistData function used to fetch the historical data for a specific State.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+  const fetchHistData = (state) => {
+    setHistIsLoaded(false);
+    fetch(`https://api.covidtracking.com/v1/states/${state}/daily.json`)
+      .then(res => res.json())
+      .then((result) => {
+        let newResult = result.map(res => {
+            let newRes = Object.assign({}, res);
+            newRes.date = setDate(newRes.date);
+            return newRes;
+        })
+        setHistIsLoaded(true);
+        setHistdata(newResult);
+      },
+        (error) => {
+          setHistIsLoaded(true);
+          setHistError(error)
+        }
+      )
+  }
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+#### Sample Code: 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This code snippet shows an interactive AreaCharts component from Recharts
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+            <div className='history-wrapper'>
+                <h3>Historic Data</h3>    
+                <AreaChart
+                    width={450}
+                    height={225}
+                    data={data}
+                    margin={{
+                        top: 20, right: 30, left: 30, bottom: 5,
+                    }}
+                >
+                    <CartesianGrid strokeDasharray="4 4" />
+                    <XAxis dataKey="date" />
+                    <YAxis />
+                    <Tooltip content={<CustomTooltip date={data.date}/>}/>
+                    <Legend />
+                    <Area type="monotone" dataKey="positive" stackId="1" stroke="#8884d8" fill="#8884d8" />
+                    <Area type="monotone" dataKey="negative" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
+                    <Area type="monotone" dataKey="death" stackId="2" stroke="#FA5745" fill="#FA7D72" />
+                </AreaChart>
+            </div>
 
-### Code Splitting
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Sample Code:
 
-### Analyzing the Bundle Size
+The following code snippet shows use of Recharts Custom Tool Tip function with vanilla javascript to change the price amount when a user moves the cursor over the graph:
+```
+const CustomTooltip = (props) => {
+    if (props.active) {
+        return (
+            <div className="custom-tooltip">
+                <li className="date">{props.payload[0].payload.date}</li>
+                <li className="negative">Neg: {props.payload[0].payload.negative}</li>
+                <li className="positive">Pos: {props.payload[0].payload.positive}</li>
+                <li>Deaths: {props.payload[0].payload.death}</li>
+            </div>
+        );
+    }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    return null;
+};
 
-### Making a Progressive Web App
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -38,10 +38,10 @@ export const Today = ({currState}) => {
                     return (
                         <div className={display} key={state.state}>
                             <li>Total Tests</li>
-                            <li>Positive</li>
-                            <li>Negative</li>
                             <li>{state.totalTestResults}</li>
+                            <li>Positive</li>
                             <li>{state.positive}</li>
+                            <li>Negative</li>
                             <li>{state.negative}</li>
                         </div>
 

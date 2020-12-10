@@ -1,20 +1,22 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { select, geoPath, geoAlbersUsa } from "d3";
-import { STATES_ABBREV } from "./states"
+import { STATES_ABBREV } from "./states";
+import { Today } from './today';
 
 const COLORS = ["blue", "green", "gold", "orange", "red", "purple", "maroon", "purple", 'grey', "indigo"];
 
 
 
 export const Map = ({ data, fetchHistData, setCurrState }) => {
+    const [state, setState] = useState('CA')
     const svgRef = useRef();
     const wrapperRef = useRef();
 
     useEffect(() => {
         const svg = select(svgRef.current);
         
-        const width = 960;
-        const height = 500;
+        const width = 750;
+        const height = 375;
 
         const projection = geoAlbersUsa().fitSize([width, height], data);
         const pathGenerator = geoPath().projection(projection);
@@ -47,8 +49,8 @@ export const Map = ({ data, fetchHistData, setCurrState }) => {
 
 
     return (
-        <div ref={wrapperRef}>
-            <svg ref={svgRef} style={{ width: 960, height: 500 }}></svg>
+        <div ref={wrapperRef} >
+            <svg ref={svgRef} style={{ width: 750, height: 375 }} className='map'></svg>
         </div>
     )
 }

@@ -13,10 +13,10 @@ export const History = ({ data, isLoaded, error }) => {
     } else {
         return (
             <div>
-                <h1>Historic Data</h1>    
+                <h2>Historic Data</h2>    
                 <AreaChart
-                    width={1200}
-                    height={500}
+                    width={450}
+                    height={225}
                     data={data}
                     margin={{
                         top: 20, right: 30, left: 20, bottom: 5,
@@ -40,10 +40,10 @@ const CustomTooltip = (props) => {
     if (props.active) {
         return (
             <div className="custom-tooltip">
-                <p className="date">{props.payload[0].payload.date}</p>
-                <p>Total: {props.payload[0].payload.totalTestResults}</p>
-                <p className="positive">Pos: {props.payload[0].payload.positive}</p>
-                <p className="negative">Neg: {props.payload[0].payload.negative}</p>
+                <li className="date">{props.payload[0].payload.date}</li>
+                <li>Total: {props.payload[0].payload.totalTestResults}</li>
+                <li className="positive">Pos: {props.payload[0].payload.positive}</li>
+                <li className="negative">Neg: {props.payload[0].payload.negative}</li>
             </div>
         );
     }

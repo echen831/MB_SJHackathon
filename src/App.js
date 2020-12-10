@@ -65,10 +65,14 @@ const App = () => {
   return (
     <div className="App">
       MB Social Justice Hackathon
-      <Today currState={currState}/>
-      <Map data={data} fetchHistData={fetchHistData} setCurrState={setCurrState}/>
-      <History data={histData} isLoaded={isHistLoaded} error={histError}/>
-      <Buttons setCurrState={setCurrState} fetchHistData={fetchHistData}/>
+      <div className='map-wrapper'>
+        <div className='info-wrapper'>
+          <Today currState={currState}/>
+          <History data={histData} isLoaded={isHistLoaded} error={histError}/>
+        </div>
+        <Map data={data} fetchHistData={fetchHistData} setCurrState={setCurrState}/>
+      </div>
+      {/* <Buttons setCurrState={setCurrState} fetchHistData={fetchHistData}/> */}
     </div>
   );
 }

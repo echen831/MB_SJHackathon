@@ -3,13 +3,15 @@ import {
     AreaChart, Area, BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
 
+import { Loader } from './loader'
+
 
 export const History = ({ data, isLoaded, error }) => {
 
     if (error) {
         return <div>Error: {error.message}</div>
     } else if (!isLoaded) {
-        return <div>Loading...</div>
+        return <Loader/>
     } else {
         return (
             <div>

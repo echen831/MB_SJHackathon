@@ -1,14 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { select, geoPath, geoAlbersUsa } from "d3";
 import { STATES_ABBREV } from "./states";
-import { Today } from './today';
 
 const COLORS = ["blue", "green", "gold", "orange", "red", "purple", "maroon", "purple", 'grey', "indigo"];
 
 
 
 export const Map = ({ data, fetchHistData, setCurrState }) => {
-    const [state, setState] = useState('CA')
     const svgRef = useRef();
     const wrapperRef = useRef();
 
@@ -31,14 +29,14 @@ export const Map = ({ data, fetchHistData, setCurrState }) => {
             .join("path")
             .on("click", (feature, d) => {
                 fetchHistData(STATES_ABBREV[d.properties.NAME])
-            })
-            .on("mouseover", (feature, d) => {
                 setCurrState(STATES_ABBREV[d.properties.NAME])
-                // div.transition()
-                //     .duration(200)
-                //     .style('opacity', .9);
-                // div.html(d.properties.NAME)
             })
+            // .on("mouseover", (feature, d) => {
+            //     // div.transition()
+            //     //     .duration(200)
+            //     //     .style('opacity', .9);
+            //     // div.html(d.properties.NAME)
+            // })
             .attr("fill", (d) => {
                 var fips = d.properties.STATE
                 return COLORS[Number(fips[Math.floor(Math.random() * fips.length)]) % COLORS.length];

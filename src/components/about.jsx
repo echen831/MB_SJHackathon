@@ -19,16 +19,31 @@ export const About = () => {
                     <p>1 Week</p>
 
                 </div>
-                <div className="prize">
+                {/* <div className="prize">
                     <h2>Mintbean Hackathon</h2>
                     <img src="https://i.imgur.com/Rhi2W9b.png" alt="" />
                     <p>Honorable Mention</p>
-                </div>
+                </div> */}
                 <div className="tech">
                     <h2>Technology</h2>
-                    <img src="https://i.imgur.com/xQhefcL.png" alt="" />
-                    <p>Javascript</p>
-
+                    <div className='tech-images'>
+                        <div>
+                            <img src="https://i.imgur.com/xQhefcL.png" alt="" />
+                            <p>Javascript</p>
+                        </div>
+                        <div>
+                            <img src="https://cdn.auth0.com/blog/react-js/react.png" alt="" />
+                            <p>React</p> 
+                        </div>
+                        <div>
+                            <img src="https://avatars3.githubusercontent.com/u/1562726?s=400&v=4" alt="" />
+                            <p>D3</p>
+                        </div>
+                        <div>
+                            <img src="https://coursehunters.online/uploads/default/original/2X/f/f1477b754f60a99bb5346934fb69c9f728ccf338.png" alt="" />
+                            <p>Recharts</p>
+                        </div>
+                    </div>
                 </div>
 
             </div>

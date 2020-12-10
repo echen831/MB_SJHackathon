@@ -24,7 +24,7 @@ export const History = ({ data, isLoaded, error }) => {
                     height={225}
                     data={data}
                     margin={{
-                        top: 20, right: 30, left: 20, bottom: 5,
+                        top: 20, right: 30, left: 30, bottom: 5,
                     }}
                 >
                     <CartesianGrid strokeDasharray="4 4" />

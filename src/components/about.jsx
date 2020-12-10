@@ -8,7 +8,7 @@ export const About = () => {
                 <div className="objective">
                     <h1 className="">Objective</h1>
                     <p>Covid Daily Data is a data visual project completed for Mintbean's Social Justice Hackathon from Dec 4, 2020 to Dec 10, 2020. This project was built to provide updated Covid-19 data daily and as an extension to our Stop the Spread App.</p>
-                    <li>Visit: <a href="https://rasheeq-ahmed.github.io/StoptheSpread/"> Stop the Spread </a></li>
+                    <li>Visit: <a href="https://rasheeq-ahmed.github.io/StoptheSpread/" target='_blank'> Stop the Spread </a></li>
                 </div>
                 <img src="https://directorsblog.nih.gov/wp-content/uploads/2020/03/COVID-19-Card-3.jpg" alt="" />
             </div>

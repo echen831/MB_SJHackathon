@@ -1,18 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { select, geoPath, geoAlbersUsa } from "d3";
-import { STATES_HASH } from "./states"
+import { STATES_ABBREV } from "./states"
 
-const COLORS = ["blue", "green", "gold", "orange", "red", "purple", "maroon"];
-
-// enter code to create color scale
-// var colorScale = d3.scaleThreshold()
-//     .range(["grey", "green", "yellow", "orange", "red", "purple", "maroon"]);
+const COLORS = ["blue", "green", "gold", "orange", "red", "purple", "maroon", "purple", 'grey', "indigo"];
 
 
-export const Map = ({ data, fetchHistData }) => {
+
+export const Map = ({ data, fetchHistData, setCurrState }) => {
     const svgRef = useRef();
     const wrapperRef = useRef();
-    const [selectedState, setSelectedState] = useState(null);
 
     useEffect(() => {
         const svg = select(svgRef.current);
@@ -23,16 +19,27 @@ export const Map = ({ data, fetchHistData }) => {
         const projection = geoAlbersUsa().fitSize([width, height], data);
         const pathGenerator = geoPath().projection(projection);
 
+        // const div = select("body").append("div")
+        //     .attr("class", "tooltip")
+        //     .style("opacity", 0);
+
         svg
             .selectAll(".state")
             .data(data.features)
             .join("path")
             .on("click", (feature, d) => {
-                console.log(feature, d)
+                fetchHistData(STATES_ABBREV[d.properties.NAME])
+            })
+            .on("mouseover", (feature, d) => {
+                setCurrState(STATES_ABBREV[d.properties.NAME])
+                // div.transition()
+                //     .duration(200)
+                //     .style('opacity', .9);
+                // div.html(d.properties.NAME)
             })
             .attr("fill", (d) => {
                 var fips = d.properties.STATE
-                return COLORS[Number(fips[fips.length-1]) % COLORS.length];
+                return COLORS[Number(fips[Math.floor(Math.random() * fips.length)]) % COLORS.length];
             })
             .attr("class", "state")
             .attr("d", feature => pathGenerator(feature))
@@ -40,8 +47,8 @@ export const Map = ({ data, fetchHistData }) => {
 
 
     return (
-        <div ref={wrapperRef} style={{width: 1000, height: 1000}} >
-            <svg ref={svgRef} style={{ width: 1000, height: 1000 }}></svg>
+        <div ref={wrapperRef}>
+            <svg ref={svgRef} style={{ width: 960, height: 500 }}></svg>
         </div>
     )
 }

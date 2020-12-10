@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { STATES_HASH } from './states.js';4
+import { STATES_HASH } from './states.js';
 
 export const Today = ({currState}) => {
 

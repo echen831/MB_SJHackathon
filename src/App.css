@@ -10,8 +10,8 @@ ul, li {
 .App {
   padding: none;
   margin: none;
-  height: 110vh;
-  background-color: rgb(255, 255, 236);
+  height: 120vh;
+  background-color: rgba(176, 196, 222, 0.253);;
 }
 
 .state-wrapper {
@@ -92,8 +92,8 @@ svg .state:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: lightgreen;
-  border-bottom: lightgray;
+  background-color: lightsteelblue;
+  box-shadow: 0 0 10px;
 }
 
 .history-wrapper {

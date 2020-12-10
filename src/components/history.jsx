@@ -34,6 +34,7 @@ export const History = ({ data, isLoaded, error }) => {
                     <Legend />
                     <Area type="monotone" dataKey="positive" stackId="1" stroke="#8884d8" fill="#8884d8" />
                     <Area type="monotone" dataKey="negative" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
+                    <Area type="monotone" dataKey="death" stackId="2" stroke="#FA5745" fill="#FA7D72" />
                 </AreaChart>
             </div>
         )
@@ -46,9 +47,9 @@ const CustomTooltip = (props) => {
         return (
             <div className="custom-tooltip">
                 <li className="date">{props.payload[0].payload.date}</li>
-                <li>Total: {props.payload[0].payload.totalTestResults}</li>
-                <li className="positive">Pos: {props.payload[0].payload.positive}</li>
                 <li className="negative">Neg: {props.payload[0].payload.negative}</li>
+                <li className="positive">Pos: {props.payload[0].payload.positive}</li>
+                <li>Deaths: {props.payload[0].payload.death}</li>
             </div>
         );
     }

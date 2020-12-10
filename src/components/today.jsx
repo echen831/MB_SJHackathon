@@ -43,6 +43,8 @@ export const Today = ({currState}) => {
                             <li>{state.positive}</li>
                             <li>Negative</li>
                             <li>{state.negative}</li>
+                            <li>Deaths</li>
+                            <li>{state.death}</li>
                         </div>
 
                     )

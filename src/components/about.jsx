@@ -5,12 +5,12 @@ export const About = () => {
         <div className="about-all">
 
             <div className="about-1">
-                <img src="https://blog.capterra.com/wp-content/uploads/2019/10/HEAD-Top_9_Medical_Apps_for_Doctors_Hero_no_text.png" alt="" />
                 <div className="objective">
                     <h1 className="">Objective</h1>
-                    <p>Stop The Spread is a kanban board project that was completed for Mintbean's Javascript Olympics Hackathon. This project was built with a mission of providing resource and information for Covid-19.</p>
+                    <p>Covid Daily Data is a data visual project completed for Mintbean's Social Justice Hackathon. This project was built to provide updated Covid-19 data daily and as an extension to our Stop the Spread App.</p>
 
                 </div>
+                <img src="https://directorsblog.nih.gov/wp-content/uploads/2020/03/COVID-19-Card-3.jpg" alt="" />
             </div>
             <div className="about-2">
                 <div className="duration">

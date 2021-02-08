@@ -448,3 +448,21 @@ align-items: center;
   align-items: center;
   margin-left: 1em;
 }
+
+
+/*
+Navbar
+*/
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.navbar-list {
+    display: flex;
+}

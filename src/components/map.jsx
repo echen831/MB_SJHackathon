@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { select, geoPath, geoAlbersUsa } from "d3";
 import { STATES_ABBREV } from "./states";
 
-const COLORS = ["lightblue", "lightgreen", "gold", "orange", "pink", "purple", "maroon", 'lightgrey', "indigo", 'coral'];
+const COLORS = ['#DB3A1A', '#4760DE', '#E0D01D'];
 
 
 

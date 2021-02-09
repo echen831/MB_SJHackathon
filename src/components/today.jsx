@@ -19,6 +19,7 @@ export const Today = ({currState}) => {
                 setIsLoaded(true);
                 setError(error)
             }
+
         )
     }, [])
 
